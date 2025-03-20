@@ -6,73 +6,94 @@ import org.openqa.selenium.By;
 import static utilites.WaitUtility.explicitWaitUntilVisible;
 
 public class ContactPage extends HomePage {
-    //locators
+    // Locators for input fields
     private By forenameField = By.id("forename");
     private By emailField = By.id("email");
     private By messageField = By.id("message");
 
+    // Locator for submit button
     private By submitButton = By.xpath("//a[normalize-space()='Submit']");
 
-    // Error locators
-    private By nameError = By.xpath("//span[@id='forename-err']");
+    // Locators for error messages
+    private By forenameError = By.xpath("//span[@id='forename-err']");
     private By emailError = By.xpath("//span[@id='email-err']");
     private By messageError = By.xpath("//span[@id='message-err']");
 
-    // click submit button action
-    public void clickSubmitButton(){
-        explicitWaitUntilVisible(5,submitButton);
+    // Default wait time (in seconds)
+    private final int defaultWait = 5;
+
+    /**
+     * Helper method to wait until an element is visible and then retrieve its text.
+     */
+    private String getErrorMessage(By locator, int waitSeconds) {
+        explicitWaitUntilVisible(waitSeconds, locator);
+        String errorMessage = find(locator).getText();
+        System.out.println("Error message: " + errorMessage);
+        return errorMessage;
+    }
+
+    /**
+     * Clicks the submit button after waiting for it to be visible.
+     */
+    public void clickSubmitButton() {
+        explicitWaitUntilVisible(defaultWait, submitButton);
         click(submitButton);
     }
 
-    //enter text into field
-    public void setForename(String forename){
-        explicitWaitUntilVisible(5,forenameField);
-        set(forenameField,forename);
-    }
-    public void setEmail(String email){
-        explicitWaitUntilVisible(5,emailField);
-        set(emailField,email);
-    }
-    public void setMessage(String message){
-        explicitWaitUntilVisible(5,messageField);
-        set(messageField,message);
+    /**
+     * Helper method to wait and set text in a given field.
+     */
+    private void setText(By locator, String text) {
+        explicitWaitUntilVisible(defaultWait, locator);
+        set(locator, text);
     }
 
-    // get error message
-    public String getForenameError(){
-        explicitWaitUntilVisible(3,nameError);
-        String forenameErrorMessage = find(nameError).getText();
-        System.out.println("Forename error message is: " + forenameErrorMessage);
-        return forenameErrorMessage;
+    public void setForename(String forename) {
+        setText(forenameField, forename);
     }
 
-    public String getEmailError(){
-        explicitWaitUntilVisible(3,emailError);
-        String emailErrorMessage = find(emailError).getText();
-        System.out.println("Email error message is: " + emailErrorMessage);
-        return emailErrorMessage;
+    public void setEmail(String email) {
+        setText(emailField, email);
     }
 
-    public String getMessageError(){
-        explicitWaitUntilVisible(3,messageError);
-        String messageErrorMessage = find(messageError).getText();
-        System.out.println("Message error message is: " + messageErrorMessage);
-        return messageErrorMessage;
+    public void setMessage(String message) {
+        setText(messageField, message);
     }
 
-    //check if field text contains "*"
-    public boolean textFieldHasAsterisk(){
+    public String getForenameError() {
+        return getErrorMessage(forenameError, 3);
+    }
+
+    public String getEmailError() {
+        return getErrorMessage(emailError, 3);
+    }
+
+    public String getMessageError() {
+        return getErrorMessage(messageError, 3);
+    }
+
+    /**
+     * Checks if the forename field's value contains an asterisk.
+     */
+    public boolean textFieldHasAsterisk() {
+        explicitWaitUntilVisible(defaultWait, forenameField);
         return find(forenameField).getAttribute("value").contains("*");
     }
 
-    //submit and go to AfterSubmitPage
-    public AfterSubmitPage submitAndGoToAfterSubmitPage(){
-        explicitWaitUntilVisible(5,submitButton);
+    /**
+     * Clicks the submit button and returns an instance of AfterSubmitPage.
+     */
+    public AfterSubmitPage submitAndGoToAfterSubmitPage() {
         clickSubmitButton();
         return new AfterSubmitPage();
     }
 
-
-
-
+    /**
+     * Populates all mandatory fields using the provided data.
+     */
+    public void populateMandatoryFields(String forename, String email, String message) {
+        setForename(forename);
+        setEmail(email);
+        setMessage(message);
+    }
 }

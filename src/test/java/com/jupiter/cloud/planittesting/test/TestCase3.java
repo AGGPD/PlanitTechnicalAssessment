@@ -23,22 +23,22 @@ public class TestCase3 extends BaseTest {
 
         // verify prices
         Assert.assertEquals(cartPage.getProductPrice("Stuffed Frog"),
-                10.99, 0.001, "Stuffed Frog price mismatch");
+                10.99, "Stuffed Frog price mismatch");
         Assert.assertEquals(cartPage.getProductPrice("Fluffy Bunny"),
-                9.99, 0.001, "Fluffy Bunny price mismatch");
+                9.99, "Fluffy Bunny price mismatch");
         Assert.assertEquals(cartPage.getProductPrice("Valentine Bear"),
-                14.99, 0.001, "Valentine Bear price mismatch");
+                14.99, "Valentine Bear price mismatch");
 
         // Verify subtotals
         Assert.assertEquals(cartPage.getProductSubtotal("Stuffed Frog"),
-                10.99 * 2, 0.001, "Stuffed Frog subtotal mismatch");
+                10.99 * 2,"Stuffed Frog subtotal mismatch");
         Assert.assertEquals(cartPage.getProductSubtotal("Fluffy Bunny"),
-                9.99 * 5, 0.001, "Fluffy Bunny subtotal mismatch");
+                9.99 * 5, "Fluffy Bunny subtotal mismatch");
         Assert.assertEquals(cartPage.getProductSubtotal("Valentine Bear"),
-                14.99 * 3, 0.001, "Valentine Bear subtotal mismatch");
+                14.99 * 3, "Valentine Bear subtotal mismatch");
 
         // Verify total
         double expectedTotal = (10.99 * 2) + (9.99 * 5) + (14.99 * 3);
-        Assert.assertEquals(cartPage.getTotal(), expectedTotal, 0.001, "Total mismatch");
+        Assert.assertEquals(cartPage.getTotal(), expectedTotal,"Total mismatch");
     }
 }

@@ -14,26 +14,21 @@ public class TestCase1 extends BaseTest {
         //click submit button
         contactPage.clickSubmitButton();
 
-        //assert
-        String actualForenameError = contactPage.getForenameError();
-        String expectedForenameError = "Forename is required";
-        Assert.assertEquals(actualForenameError, expectedForenameError);
-
-        String actualEmailError = contactPage.getEmailError();
-        String expectedEmailError = "Email is required";
-        Assert.assertEquals(actualEmailError, expectedEmailError);
-
-        String actualMessageError = contactPage.getMessageError();
-        String expectedMessageError = "Message is required";
-        Assert.assertEquals(actualMessageError, expectedMessageError);
+        // Verify error messages for required fields
+        verifyErrorMessage("Forename", contactPage.getForenameError(), "Forename is required");
+        verifyErrorMessage("Email", contactPage.getEmailError(), "Email is required");
+        verifyErrorMessage("Message", contactPage.getMessageError(), "Message is required");
 
         //populate fields
-        contactPage.setForename("Test User");
-        contactPage.setEmail("test@example.com");
-        contactPage.setMessage("Test Message");
+        contactPage.populateMandatoryFields("Test User", "test@example.com", "Test Message");
 
         //click submit button again
         contactPage.clickSubmitButton();
+    }
+
+    // Helper method for assertions to improve readability
+    private void verifyErrorMessage(String fieldName, String actual, String expected) {
+        Assert.assertEquals(actual, expected, fieldName + " error message mismatch");
     }
 
 }
