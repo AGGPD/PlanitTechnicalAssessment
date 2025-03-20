@@ -26,19 +26,19 @@ public class ContactPage extends HomePage {
 
     //enter text into field
     public void setForename(String forename){
+        explicitWaitUntilVisible(5,forenameField);
         set(forenameField,forename);
     }
-
     public void setEmail(String email){
+        explicitWaitUntilVisible(5,emailField);
         set(emailField,email);
     }
-
     public void setMessage(String message){
+        explicitWaitUntilVisible(5,messageField);
         set(messageField,message);
     }
 
     // get error message
-
     public String getForenameError(){
         explicitWaitUntilVisible(3,nameError);
         String forenameErrorMessage = find(nameError).getText();
@@ -59,5 +59,20 @@ public class ContactPage extends HomePage {
         System.out.println("Message error message is: " + messageErrorMessage);
         return messageErrorMessage;
     }
+
+    //check if field text contains "*"
+    public boolean textFieldHasAsterisk(){
+        return find(forenameField).getAttribute("value").contains("*");
+    }
+
+    //submit and go to AfterSubmitPage
+    public AfterSubmitPage submitAndGoToAfterSubmitPage(){
+        explicitWaitUntilVisible(5,submitButton);
+        clickSubmitButton();
+        return new AfterSubmitPage();
+    }
+
+
+
 
 }
