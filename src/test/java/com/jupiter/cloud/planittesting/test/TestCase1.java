@@ -1,6 +1,7 @@
 package com.jupiter.cloud.planittesting.test;
 
 import com.jupiter.cloud.planittesting.base.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TestCase1 extends BaseTest {
@@ -14,9 +15,17 @@ public class TestCase1 extends BaseTest {
         contactPage.clickSubmitButton();
 
         //assert
-        assert !contactPage.getEmailError().isEmpty();
-        assert !contactPage.getForenameError().isEmpty();
-        assert !contactPage.getMessageError().isEmpty();
+        String actualForenameError = contactPage.getForenameError();
+        String expectedForenameError = "Forename is required";
+        Assert.assertEquals(actualForenameError, expectedForenameError);
+
+        String actualEmailError = contactPage.getEmailError();
+        String expectedEmailError = "Email is required";
+        Assert.assertEquals(actualEmailError, expectedEmailError);
+
+        String actualMessageError = contactPage.getMessageError();
+        String expectedMessageError = "Message is required";
+        Assert.assertEquals(actualMessageError, expectedMessageError);
 
         //populate fields
         contactPage.setForename("Test User");
@@ -25,11 +34,6 @@ public class TestCase1 extends BaseTest {
 
         //click submit button again
         contactPage.clickSubmitButton();
-
-        //assert
-        assert contactPage.getEmailError().isEmpty();
-        assert contactPage.getForenameError().isEmpty();
-        assert contactPage.getMessageError().isEmpty();
     }
 
 }
