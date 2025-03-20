@@ -25,15 +25,15 @@ Before setting up the project, ensure you have the following installed:
   ```bash
   java --version
 
-Your output should resemble:
-java 23.0.2 2025-01-21
-Java(TM) SE Runtime Environment (build 23.0.2+7-58)
-Java HotSpot(TM) 64-Bit Server VM (build 23.0.2+7-58, mixed mode, sharing)
+  Your output should resemble:
+    java 23.0.2 2025-01-21
+    Java(TM) SE Runtime Environment (build 23.0.2+7-58)
+    Java HotSpot(TM) 64-Bit Server VM (build 23.0.2+7-58, mixed mode, sharing)
 
-**- **Maven**
+**Maven**
 The project uses Maven for dependency management and build processes. Refer to Apache Maven for installation instructions. The pom.xml file in the root defines all necessary dependencies.
 
-**- **Git**
+**Git**
 Git is required to clone the repository. Download it from git-scm.com.
 
 **IntelliJ IDEA**
@@ -76,7 +76,40 @@ Below is the folder structure of the project:
                                 ├── TestCase2.java
                                 └── TestCase3.java
 
+**Setup & Installation**
+1. Clone the repository:
+  git clone https://github.com/yourusername/your-repository.git
+  cd your-repository
+2. Build the project with Maven:
+  mvn clean install
 
----
+**Running the Tests**
+The tests are managed using TestNG. To run the tests via Maven, execute:
+  mvn test
+
+**Continuous Integration**
+This project is configured to be CI-ready. It can be integrated into a CI/CD pipeline (for example, using Jenkins) where Maven commands ensure tests are automatically executed on every build.
+
+**Additional Information**
+  
+  Framework Details:
+
+    Selenium Java: Version 4.29.0
+    
+    TestNG: Version 7.10.0 (test scope)
+    
+    SLF4J Simple: Version 2.0.9 (for logging)
+    
+    JetBrains Annotations: For compile-time annotations
+    
+  Design Pattern:
+  The project implements the Page Object Model (POM) for clarity and maintainability.
+  
+  Reporting:
+  TestNG generates default reports found in the /target/surefire-reports folder after test execution.
+  
+  Contact:
+  For any questions or feedback, please contact me at andypd01@yahoo.com.
+
 
 This README provides a clear overview, setup instructions, and a project layout that helps reviewers quickly understand and use your repository.
