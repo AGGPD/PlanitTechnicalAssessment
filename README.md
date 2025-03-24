@@ -92,15 +92,17 @@ This project is configured to be CI-ready. It can be integrated into a CI/CD pip
 
 **Additional Information**
   
-  Framework Details:
-
-    Selenium Java: Version 4.29.0
-    
-    TestNG: Version 7.10.0 (test scope)
-    
-    SLF4J Simple: Version 2.0.9 (for logging)
-    
-    JetBrains Annotations: For compile-time annotations
+Dependencies
+  
+  The project uses the following dependencies:
+  
+    Selenium WebDriver 4.30.0
+  
+    TestNG 7.11.0
+  
+    Logback (for logging) 1.5.18
+  
+    Log4j (for logging) 2.24.3
     
   Design Pattern:
   The project implements the Page Object Model (POM) for clarity and maintainability.
