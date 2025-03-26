@@ -16,6 +16,47 @@ This repository contains the automation test scripts for the Automation Engineer
 
 This project automates test cases for a web application (http://jupiter.cloud.planittesting.com) by validating contact form behavior and e-commerce functionalities. The framework uses Selenium with TestNG and applies the Page Object Model (POM) for better maintainability and reusability.
 
+Test case 1:
+
+1. From the home page go to contact page
+
+2. Click submit button
+
+3. Verify error messages
+
+4. Populate mandatory fields
+
+5. Validate errors are gone
+
+
+Test case 2:
+
+
+1. From the home page go to contact page
+
+2. Populate mandatory fields
+
+3. Click submit button
+
+4. Validate successful submission message
+
+
+Note: Run this test 5 times to ensure 100% pass rate
+
+
+Test case 3:
+
+
+1. Buy 2 Stuffed Frog, 5 Fluffy Bunny, 3 Valentine Bear
+
+2. Go to the cart page
+
+3. Verify the subtotal for each product is correct
+
+4. Verify the price for each product
+
+5. Verify that total = sum(sub totals)
+
 ## Prerequisites
 
 Before setting up the project, ensure you have the following installed:
@@ -92,15 +133,17 @@ This project is configured to be CI-ready. It can be integrated into a CI/CD pip
 
 **Additional Information**
   
-  Framework Details:
-
-    Selenium Java: Version 4.29.0
-    
-    TestNG: Version 7.10.0 (test scope)
-    
-    SLF4J Simple: Version 2.0.9 (for logging)
-    
-    JetBrains Annotations: For compile-time annotations
+Dependencies
+  
+  The project uses the following dependencies:
+  
+    Selenium WebDriver 4.30.0
+  
+    TestNG 7.11.0
+  
+    Logback (for logging) 1.5.18
+  
+    Log4j (for logging) 2.24.3
     
   Design Pattern:
   The project implements the Page Object Model (POM) for clarity and maintainability.
