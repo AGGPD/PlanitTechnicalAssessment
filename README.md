@@ -67,9 +67,9 @@ Before setting up the project, ensure you have the following installed:
   java --version
 
   Your output should resemble:
-    java 23.0.2 2025-01-21
-    Java(TM) SE Runtime Environment (build 23.0.2+7-58)
-    Java HotSpot(TM) 64-Bit Server VM (build 23.0.2+7-58, mixed mode, sharing)
+    java 21.0.6 2025-01-21 LTS
+    Java(TM) SE Runtime Environment (build 21.0.6+8-LTS-188)
+    Java HotSpot(TM) 64-Bit Server VM (build 21.0.6+8-LTS-188, mixed mode, sharing)
 
 **Maven**
 The project uses Maven for dependency management and build processes. Refer to Apache Maven for installation instructions. The pom.xml file in the root defines all necessary dependencies.
